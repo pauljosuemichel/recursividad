@@ -1,24 +1,32 @@
-// Buscador de numeros identicos
-
 #include <iostream>
 #include <algorithm>
-
+#include <vector>
 using namespace std;
 
-int arr[7] = {4,45,2,3,0,234,1};
-int n = 3;
-int i = sizeof(arr)/2;
+bool binSearch(vector<int>& arr, int n){
+    int i = arr.size()/2;
 
-int main(){
-    const int tamaño = 7;
-    sort(arr, arr + tamaño);
-    return 0;
+    if (arr[i] == n) return true;
+    if (i == 0) return false;
+
+    if (arr[i] < n){
+        vector<int> newArr(arr.begin() + i + 1, arr.end());
+        return binSearch(newArr, n);
+    }
+    if (arr[i] > n){
+        vector<int> newArr(arr.begin(), arr.begin() + i);
+        return binSearch(newArr, n);
+    }
+    return false;
 }
 
-int binSearch(){
-    if(arr[i] == n){ return true; }
+int main(){
+    vector<int> arr = {4, 45, 2, 3, 0, 234, 1};
+    int n = 3;
 
-    if(arr[i] < n ){ i/2; }
-    i(arr[i] > n){  }
-    
+    sort(arr.begin(), arr.end());
+
+    cout << boolalpha << binSearch(arr, n);
+
+    return 0;
 }
