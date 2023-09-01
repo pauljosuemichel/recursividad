@@ -3,7 +3,7 @@
 #include <vector>
 using namespace std;
 
-bool binSearch(vector<int>& arr, int n){
+bool binSearch(vector<int> arr, int n){
     int i = arr.size()/2;
 
     if (arr[i] == n) return true;
